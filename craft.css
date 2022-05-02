@@ -1,0 +1,505 @@
+:root{
+	--day: lightblue;
+	--night: #ccc;
+	--color1: url('sprites/land/land-top.png');
+	--color2: url('sprites/brick/brick-bottom.png');
+	--color3: url('sprites/wood/wood-top.png');
+	--color4: url('sprites/sand/sand.jpg');
+	--color5: url('sprites/land/land.png');
+	--color6: url('sprites/rock/rock.png');
+	--color7: url('sprites/glass/glass.png');
+	--color8: url('sprites/brick/red-brick.png');
+	--color9: url('sprites/bomb/bomb.png');
+
+	--darkground: linear-gradient(rgb(9, 32, 4), rgb(20, 56, 12));
+	--ground: linear-gradient(rgb(28, 97, 11), rgb(20, 56, 12));
+	--moon: linear-gradient(to right, rgb(33, 33, 33), #fff);
+	--sun: #fff;
+}
+
+@font-face{
+	font-family: ArcadeClassic;
+	src: url('arcadeClassic/arcade.TTF');
+}
+
+body{
+	background: var(--day);
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+}
+
+.cloud{
+	position: absolute;
+	top: -300px;
+	left: 0px;
+	transform: translateZ(0px);
+}
+
+.front-cloud{
+	width: 100px;
+	height: 10px;
+	position: absolute;
+	background: #fff;
+}
+.back-cloud{
+	width: 100px;
+	height: 10px;
+	background: #fff;
+	position: absolute;
+	transform: translateZ(-100px);
+}
+.left-cloud{
+	width: 100px;
+	height: 10px;
+	background: #fff;
+	position: absolute;
+	left: -100px;
+	transform: rotateY(-90deg);
+	transform-origin: right;
+}
+.right-cloud{
+	width: 100px;
+	height: 10px;
+	background: #fff;
+	position: absolute;
+	left: 100px;
+	transform: rotateY(90deg);
+	transform-origin: left;
+}
+.top-cloud{
+	width: 100px;
+	height: 100px;
+	background: grey;
+	position: absolute;
+	top: -100px;
+	transform: rotateX(90deg);
+	transform-origin: bottom;
+}
+.bottom-cloud{
+	width: 100px;
+	height: 100px;
+	background: grey;
+	position: absolute;
+	top: 10px;
+	transform: rotateX(-90deg);
+	transform-origin: top;
+}
+
+
+.front-overlay{
+	width: 100%;
+	height: 100vh;
+	background: black;
+	position: absolute;
+	top: 0;
+	opacity: .9;
+}
+
+	.front-page-container{
+		width: 100%;
+		height: 100vh;
+		/*background: red;*/
+		position: absolute;
+		top: 0;
+		display: flex;
+		justify-content: center;
+		/*align-items: center;*/
+	}
+		.front-page{
+			font-family: ArcadeClassic;
+		}
+			.front-page .name{
+				color: #fff;
+				font-size: 5em;
+				position: relative;
+				text-shadow: 1px 1px 0 rgb(65, 65, 65),
+							 1px 2px 0 rgb(65, 65, 65),
+							 1px 3px 0 rgb(65, 65, 65),
+							 1px 4px 0 rgb(65, 65, 65),
+							 1px 5px 0 rgb(65, 65, 65),
+							 1px 6px 0 rgb(65, 65, 65),
+							 1px 7px 0 rgb(65, 65, 65),
+							 1px 8px 0 rgb(65, 65, 65),
+							 1px 9px 0 rgb(65, 65, 65),
+							 1px 12px 0 #000;
+				animation: float 1s infinite 0s;
+			}
+			@keyframes float{
+					0%{top: 0px}
+					50%{top: -20px}
+					100%{top: 0px}
+			}
+
+			.front-page .version-cont{
+				position: relative;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				animation: float 1s infinite 0s;
+			}
+			@keyframes float{
+					0%{top: 0px}
+					50%{top: -20px}
+					100%{top: 0px}
+			}
+				.front-page .version{
+					position: relative;
+					top: -120px;
+					color: #fff;
+					font-size: 2em;
+					text-shadow: 1px 1px 0 rgb(65, 65, 65),
+								 1px 2px 0 rgb(65, 65, 65),
+								 1px 3px 0 rgb(65, 65, 65),
+								 1px 4px 0 rgb(65, 65, 65),
+								 1px 5px 0 rgb(65, 65, 65),
+								 1px 6px 0 rgb(65, 65, 65),
+								 1px 10px 0 #000;
+				}
+				.btn-cont{
+					display: flex;
+					justify-content: center;
+					align-items: center;
+					cursor: pointer;
+
+				}
+				.start-btn{
+					width: 300px;
+					height: 50px;
+					background: grey;
+					font-size: 2em;
+					/*text-align: center;*/
+					display: flex;
+					justify-content: center;
+					align-items: center;
+					position: relative;
+					top: -50px;
+					color: #fff;
+					text-shadow: 2px 2px 0 #0c0c0c;
+					/*border: 4px outset black;*/
+					border-left: 2px solid #fff;
+					border-right: 2px solid #000;
+					border-top: 2px solid #fff;
+					border-bottom: 2px solid #000;
+				}
+				.start-btn:hover{
+					background: #0c0c0c;
+					border-left: 2px solid grey;
+					border-right: 2px solid #000;
+					border-top: 2px solid grey;
+					border-bottom: 2px solid #000;
+				}
+				
+					
+
+.sun{
+	width: 50px;
+	height: 50px;
+	background: var(--sun);
+	/*border-radius: 100%;*/
+	position: absolute;
+	top: 40px;
+	left: 300px;
+	box-shadow: 0 0 10px #fff,
+			0 0 20px #fff,
+			0 0 30px #fff;
+
+}
+
+.instructions{
+	color: #fff;
+}
+.instructions h4{
+	font-size: 1.4em;
+}
+.instructions span{
+	font-size: 1.3em;
+}
+
+div{
+	transform-style: preserve-3d;
+}
+
+.canvas{
+	/*border: 4px solid red;*/
+	height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	transform: rotateX(-28deg);
+	perspective: 900px;
+	/*transform-origin: top;*/
+/*	animation: rotate 10s infinite 0s;
+}
+@keyframes rotate{
+	0%{
+		transform: rotateX(13deg) rotateY(0deg);
+	}
+	50%{
+		transform: rotateX(-13deg) rotateY(360deg);
+	}
+	100%{
+		transform: rotateX(13deg) rotateY(0deg);
+	}*/
+}
+
+
+
+
+
+.canvas3{
+	transform: translateZ(0px);
+}	
+.canvas4{
+	position: absolute;
+	left: 0px;
+}
+
+.container{
+	position: absolute;
+	top: 0px;
+	left: 0px;
+}
+
+/*
+.container div:hover{
+	border: 1px solid yellow;
+}*/
+
+
+.front{
+	/*background: red;*/
+	width: 50px;
+	height: 50px;
+	position: absolute;
+	background: linear-gradient(darkgreen, green);
+}
+
+.back{
+	/*background: blue;*/
+	width: 50px;
+	height: 50px;
+	position: absolute;
+	background: linear-gradient(darkgreen, green);
+	transform: translateZ(-50px);
+}
+
+.left{
+	/*background: green;*/
+	width: 50px;
+	height: 50px;
+	position: absolute;
+	background: linear-gradient(darkgreen, green);
+	left: -50px;
+	transform: rotateY(-90deg);
+	transform-origin: right;
+}
+
+.right{
+	/*background: yellow;*/
+	width: 50px;
+	height: 50px;
+	position: absolute;
+	background: linear-gradient(darkgreen, green);
+	left: 50px;
+	transform: rotateY(90deg);
+	transform-origin: left;
+}
+
+.top{
+	/*background: orange;*/
+	width: 50px;
+	height: 50px;
+	position: absolute;
+	background: linear-gradient(darkgreen, green);
+	top: -50px;
+	transform: rotateX(90deg);
+	transform-origin: bottom;
+}
+
+.bottom{
+	/*background: pink;*/
+	width: 50px;
+	height: 50px;
+	position: absolute;
+	background: linear-gradient(darkgreen, green);
+	top: 50px;
+	transform: rotateX(-90deg);
+	transform-origin: top;
+}
+
+
+.ground{
+	width: 1800px;
+	height: 1100px;
+	background: var(--ground);
+	transform: rotateX(90deg) translateZ(400px);
+	position: absolute;
+	top: 0px;
+	left: -1000px;
+}
+
+/*	.ground-hill{
+		width: 1800px;
+		height: 1100px;
+		background: var(--ground);
+		border-top: 1px solid #0c0c0c;
+		position: absolute;
+		top: 150px;
+		left: -1000px;
+		transform: translateZ(550px);
+	}
+*/
+
+	
+
+	.cell{
+		width: 50px;
+		height: 50px;
+		/*border: 1px solid #000;*/
+		position: absolute;
+		left: 0px;
+		top: 0px;
+	}
+	.cell:hover{
+		/*border: 1px solid yellow;*/
+		background: #fff;
+		opacity: .3;
+	}
+
+.overlay{
+	width: 100%;
+	height: 100vh;
+	background: #000;
+	opacity: .7;
+	position: absolute;
+	top: 0;
+	display: none;
+}
+	.texture-cont{
+		width: 100%;
+		height: 100vh;
+		/*background: #fff;*/
+		position: absolute;
+		top: 0;
+		display: none;
+		justify-content: center;
+		align-items: center;
+	}
+		.textures{
+			width: 350px;
+			height: 140px;
+			background: #fff;
+		}
+			.text-cont{
+				width: 100%;
+				height: 100%;
+				/*background: red;*/
+				border: 5px solid #fff;
+				position: absolute;
+				top: 0;	
+			}
+			.text-cont div{
+				width: 70px;
+				height: 70px;
+				position: absolute;
+				/*top: 0px;*/
+			}
+			.text-cont div:hover{
+				border: 2px solid #fff;
+			}
+				.text1{	
+					background: var(--color1) no-repeat center center/cover;
+				}
+				.text2{
+					background:  var(--color2) no-repeat center center/cover;
+					left: 70px; 
+				}
+				.text3{
+					background:  var(--color3) no-repeat center center/cover;
+					left: 140px;
+				}
+				.text4{
+					background:  var(--color4) no-repeat center center/cover;
+					left: 210px;
+				}
+				.text5{
+					background:  var(--color5) no-repeat center center/cover;
+					left: 280px;
+				}
+				.text6{
+					background:  var(--color6) no-repeat center center/cover;
+					left: 0px;
+					top: 70px
+				}
+				.text7{
+					background:  var(--color7) no-repeat center center/cover;
+					left: 70px;
+					top: 70px;
+				}
+				.text8{
+					background:  var(--color8) no-repeat center center/cover;
+					left: 140px;
+					top: 70px;
+				}
+				.text9{
+					background:  var(--color9) no-repeat center center/cover;
+					left: 210px;
+					top: 70px;
+				}
+				.text10{
+					background: url('sprites/nani.png') no-repeat center center/cover;
+					left: 280px;
+					top: 70px;
+				}
+				
+
+.cursor{
+	width: 50px;
+	height: 50px;
+	background: url('sprites/land/land-top.png') no-repeat center center/cover;
+	position: absolute;
+	transform: translateZ(3px);
+}
+
+.item-cont{
+	width: 100%;
+	height: 100vh;
+	display: none;
+	justify-content: flex-start;
+	align-items: center;
+	position: absolute;
+	top: 0;
+	left: 1em;
+}
+
+.items{
+	width: 60px;
+	height: 210px;
+	background: #fff;
+}
+	.items div{
+		width: 55;
+		height: 55px;
+		/*margin-top: 5px;*/
+		border: 3px solid #fff;
+	}
+	.items div:hover{
+		border: 3px solid green; 
+
+	}
+	.item1{
+		background: url('sprites/items/axe.png') no-repeat center center/cover;
+	}
+	.item2{
+		background: url('sprites/items/sword.png') no-repeat center center/cover;
+		/*background-color: grey;*/
+	}
+	.item3{
+		/*background: url('sprites/axe.png') no-repeat center center/cover;*/
+		background-color: grey;
+	}
+	.item4{
+		/*background: url('sprites/axe.png') no-repeat center center/cover;*/
+		background-color: grey;
+	}

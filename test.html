@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>test</title>
+</head>
+<body>
+	<div class="cont">
+		<div class="cube">
+			<div class="front"></div>
+			<div class="back"></div>
+			<div class="left"></div>
+			<div class="right"></div>
+			<div class="top"></div>
+			<div class="bottom"></div>
+		</div>	
+	</div>
+</body>
+<style type="text/css">
+	div{
+		transform-style: preserve-3d;
+	}
+	.cont{	
+		width: 100%;
+		height: 100vh;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		animation: rotate 10s infinite 0s;
+	}
+	@keyframes rotate{
+		0%{
+			transform: rotateX(5deg) rotateY(0deg);
+		}
+		50%{
+			transform: rotateX(-5deg) rotateY(360deg);
+		}
+		100%{
+			transform: rotateX(5deg) rotateY(0deg);
+		}
+	}
+	.cube{
+		transform: rotateX(90deg);
+	}
+	.cube div{
+		width: 50px;
+		height: 50px;
+		background:  url('sprites/land.png') no-repeat center center/cover;
+		position: absolute;
+		/*top: 0px;*/
+	}
+	.front{
+		transform: rotateX(-90deg);
+	}
+	.back{
+		top: -50px;
+		transform: rotateX(-90deg);
+	}
+	.left{
+		left: -50px;
+		transform: rotateX(-90deg) rotateY(-90deg);
+		transform-origin: right;
+	}
+	.right{
+		left: 50px;
+		transform: rotateX(-90deg) rotateY(90deg);
+		transform-origin: left;
+	}
+	.top{
+		left: 0px;
+		transform: translateZ(-50px);
+		transform-origin: bottom;
+	}
+	
+
+
+</style>
+</html>
